@@ -37,7 +37,7 @@ public class PedidoDAO {
         stmt.setDate(2, Date.valueOf(p.getData()));
         stmt.execute();
         PreparedStatement stmt3 = connection.prepareStatement("INSERT INTO Carrinho"
-                + " (id,quant,codigoproduto) values (?,?,?)");
+                + " (id,quant,produto) values (?,?,?)");
 
         PreparedStatement stmt2 = connection.prepareStatement("INSERT INTO listapedidos"
                 + " (codigopedido,idcarrinho) values (?,?)");
