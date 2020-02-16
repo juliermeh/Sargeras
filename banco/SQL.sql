@@ -25,5 +25,5 @@ CREATE TABLE listapedidos(
     codigopedido INTEGER,
     idcarrinho INTEGER,
     FOREIGN KEY(codigopedido) REFERENCES Pedido(codigo),
-    FOREIGN KEY(idcarrinho) REFERENCES Carrinho(id),
+    FOREIGN KEY(idcarrinho) REFERENCES Carrinho(id)
 );
