@@ -2,7 +2,7 @@ package br.edu.ifpb.bdnc.dao;
 
 import br.edu.ifpb.bdnc.conexao.PostgreSQL;
 import br.edu.ifpb.bdnc.conexao.Redis;
-import br.edu.ifpb.bdnc.modelo.ItemPedido;
+import br.edu.ifpb.bdnc.modelo.CarrinhoDeCompras;
 import br.edu.ifpb.bdnc.modelo.Pedido;
 import com.google.gson.Gson;
 import redis.clients.jedis.Jedis;
@@ -36,11 +36,11 @@ public class PedidoDAO {
         stmt.setInt(1, p.getCodigo());
         stmt.setDate(2, Date.valueOf(p.getData()));
         stmt.execute();
-        PreparedStatement stmt3 = connection.prepareStatement("INSERT INTO itempedido"
+        PreparedStatement stmt3 = connection.prepareStatement("INSERT INTO Carrinho"
                 + " (id,quant,codigoproduto) values (?,?,?)");
 
         PreparedStatement stmt2 = connection.prepareStatement("INSERT INTO listapedidos"
-                + " (codigopedido,iditem) values (?,?)");
+                + " (codigopedido,idcarrinho) values (?,?)");
         for (int k = 0; k < p.getItens().size(); k++) {
 
             stmt3.setInt(1, p.getItens().get(k).getId());
@@ -75,15 +75,15 @@ public class PedidoDAO {
                         + " where codigopedido = ?");
                 stmt2.setInt(1, codigo);
                 ResultSet listapedidos = stmt2.executeQuery();
-                List<ItemPedido> lista = new ArrayList<>();
+                List<CarrinhoDeCompras> lista = new ArrayList<>();
                 while (listapedidos.next()) {
 
                     PreparedStatement stmt3 = connection.prepareStatement("SELECT * "
-                            + "FROM itempedido WHERE id= ?");
-                    stmt3.setInt(1, listapedidos.getInt("iditem"));
+                            + "FROM Carrinho WHERE id= ?");
+                    stmt3.setInt(1, listapedidos.getInt("produto"));
                     ResultSet itempedido = stmt3.executeQuery();
                     if (itempedido.next()) {
-                        ItemPedido item = new ItemPedido(itempedido.getInt("id"),
+                        CarrinhoDeCompras item = new CarrinhoDeCompras(itempedido.getInt("id"),
                                 itempedido.getInt("quant"), itempedido.getInt("codigoproduto"));
                         lista.add(item);
                     }

@@ -5,7 +5,7 @@
 	PRIMARY KEY (codigo)
 );
 
-CREATE TABLE ItemPedido(
+CREATE TABLE Carrinho(
 	id SERIAL,
 	quant INTEGER,
 	produto INTEGER,
@@ -18,5 +18,12 @@ CREATE TABLE Pedido(
 	data DATE,
 	itens INTEGER,
 	PRIMARY KEY(codigo),
-	FOREIGN KEY(itens) REFERENCES ItemPedido(id)
+	FOREIGN KEY(itens) REFERENCES Carrinho(id)
+);
+
+CREATE TABLE listapedidos(
+    codigopedido INTEGER,
+    idcarrinho INTEGER,
+    FOREIGN KEY(codigopedido) REFERENCES Pedido(codigo),
+    FOREIGN KEY(idcarrinho) REFERENCES Carrinho(id),
 );

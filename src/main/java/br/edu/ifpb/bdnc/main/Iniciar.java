@@ -1,7 +1,7 @@
 package br.edu.ifpb.bdnc.main;
 
 import br.edu.ifpb.bdnc.dao.PedidoDAO;
-import br.edu.ifpb.bdnc.modelo.ItemPedido;
+import br.edu.ifpb.bdnc.modelo.CarrinhoDeCompras;
 import br.edu.ifpb.bdnc.modelo.Pedido;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -14,9 +14,9 @@ public class Iniciar {
 
     public static void main(String [] args) {
 
-        ItemPedido item = new ItemPedido(3, 5, 1);
-        ItemPedido item2 = new ItemPedido(4, 4, 2);
-        List<ItemPedido> lista = new ArrayList<>();
+        CarrinhoDeCompras item = new CarrinhoDeCompras(3, 5, 1);
+        CarrinhoDeCompras item2 = new CarrinhoDeCompras(4, 4, 2);
+        List<CarrinhoDeCompras> lista = new ArrayList<>();
         lista.add(item);
         lista.add(item2);
         Pedido p = new Pedido(2, LocalDate.now(), lista);

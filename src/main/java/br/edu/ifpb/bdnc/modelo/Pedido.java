@@ -8,9 +8,9 @@ public class Pedido {
 
     private int codigo;
     private LocalDate data;
-    private List<ItemPedido> itens;
+    private List<CarrinhoDeCompras> itens;
 
-    public Pedido(int codigo, LocalDate data, List<ItemPedido> itens) {
+    public Pedido(int codigo, LocalDate data, List<CarrinhoDeCompras> itens) {
         this.codigo = codigo;
         this.data = data;
         this.itens = itens;
@@ -32,11 +32,11 @@ public class Pedido {
         this.data = data;
     }
 
-    public List<ItemPedido> getItens() {
+    public List<CarrinhoDeCompras> getItens() {
         return itens;
     }
 
-    public void setItens(List<ItemPedido> itens) {
+    public void setItens(List<CarrinhoDeCompras> itens) {
         this.itens = itens;
     }
 

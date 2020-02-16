@@ -1,12 +1,12 @@
 package br.edu.ifpb.bdnc.modelo;
 
-public class ItemPedido {
+public class CarrinhoDeCompras {
 
     private int id;
     private int quant;
     private int produto;
 
-    public ItemPedido(int id, int quant, int produto) {
+    public CarrinhoDeCompras(int id, int quant, int produto) {
         this.id = id;
         this.quant = quant;
         this.produto = produto;
@@ -56,7 +56,7 @@ public class ItemPedido {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ItemPedido other = (ItemPedido) obj;
+        final CarrinhoDeCompras other = (CarrinhoDeCompras) obj;
         if (this.id != other.id) {
             return false;
         }
